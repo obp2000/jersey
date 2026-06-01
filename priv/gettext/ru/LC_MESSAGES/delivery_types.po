@@ -1,0 +1,57 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100 != 11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10||n%100>=20) ? 1 : 2);\n"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:22
+#, elixir-autogen, elixir-format
+msgid "baikal"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:23
+#, elixir-autogen, elixir-format
+msgid "cdek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:16
+#, elixir-autogen, elixir-format
+msgid "delovie"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:19
+#, elixir-autogen, elixir-format
+msgid "energy"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:18
+#, elixir-autogen, elixir-format
+msgid "kit"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:17
+#, elixir-autogen, elixir-format
+msgid "pek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:15
+#, elixir-autogen, elixir-format
+msgid "pochta"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:21
+#, elixir-autogen, elixir-format
+msgid "ratek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:20
+#, elixir-autogen, elixir-format
+msgid "zhde"
+msgstr ""

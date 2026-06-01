@@ -1,0 +1,210 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.ex:11
+#, elixir-autogen
+msgid "Listing Products"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.ex:26
+#, elixir-autogen
+msgid "Edit Product"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.ex:36
+#: lib/jersey_web/live/product_live/index.html.heex:6
+#, elixir-autogen
+msgid "New Product"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/show.ex:10
+#, elixir-autogen
+msgid "Show Product"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:13
+#: lib/jersey_web/live/product_live/index.html.heex:17
+#: lib/jersey_web/live/product_live/show.html.heex:15
+#, elixir-autogen
+msgid "Name"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:18
+#: lib/jersey_web/live/product_live/form.html.heex:88
+#: lib/jersey_web/live/product_live/index.html.heex:18
+#: lib/jersey_web/live/product_live/show.html.heex:16
+#, elixir-autogen
+msgid "Price"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:28
+#: lib/jersey_web/live/product_live/index.html.heex:19
+#: lib/jersey_web/live/product_live/show.html.heex:18
+#, elixir-autogen
+msgid "Width"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:23
+#: lib/jersey_web/live/product_live/index.html.heex:20
+#: lib/jersey_web/live/product_live/show.html.heex:19
+#, elixir-autogen
+msgid "Density"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.html.heex:21
+#, elixir-autogen
+msgid "Inserted at"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.html.heex:26
+#, elixir-autogen
+msgid "Show"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.html.heex:28
+#, elixir-autogen
+msgid "Edit"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.html.heex:35
+#, elixir-autogen
+msgid "Delete"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/index.html.heex:33
+#, elixir-autogen
+msgid "Are you sure?"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/show.html.heex:3
+#, elixir-autogen
+msgid "Product %{id}"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/show.html.heex:9
+#, elixir-autogen
+msgid "Edit product"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:74
+#: lib/jersey_web/live/product_live/show.html.heex:17
+#, elixir-autogen
+msgid "Weight"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:54
+#: lib/jersey_web/live/product_live/show.html.heex:20
+#, elixir-autogen
+msgid "Dollar price"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:59
+#: lib/jersey_web/live/product_live/show.html.heex:21
+#, elixir-autogen
+msgid "Dollar rate"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:69
+#: lib/jersey_web/live/product_live/show.html.heex:22
+#, elixir-autogen
+msgid "Width shop"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:64
+#: lib/jersey_web/live/product_live/show.html.heex:23
+#, elixir-autogen
+msgid "Density shop"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:33
+#: lib/jersey_web/live/product_live/show.html.heex:24
+#, elixir-autogen
+msgid "Weight for count"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:38
+#: lib/jersey_web/live/product_live/show.html.heex:25
+#, elixir-autogen
+msgid "Length for count"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:49
+#: lib/jersey_web/live/product_live/show.html.heex:26
+#, elixir-autogen
+msgid "Price pre"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:3
+#: lib/jersey_web/live/product_live/index.html.heex:16
+#, elixir-autogen
+msgid "Id"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:43
+#, elixir-autogen
+msgid "Density for count"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:85
+#, elixir-autogen
+msgid "Price Coeff"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:79
+#, elixir-autogen
+msgid "Meters in roll"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:93
+#, elixir-autogen
+msgid "Saving..."
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:94
+#, elixir-autogen
+msgid "Save Product"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.html.heex:97
+#, elixir-autogen
+msgid "Cancel"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.ex:81
+#, elixir-autogen
+msgid "Product updated successfully"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/form.ex:98
+#, elixir-autogen
+msgid "Product created successfully"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:60
+#, elixir-autogen
+msgid "File is too large"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:63
+#, elixir-autogen
+msgid "You have selected too many files"
+msgstr ""
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:66
+#, elixir-autogen
+msgid "You have selected an unacceptable file type"
+msgstr ""
+
+#: lib/jersey_web/components/layouts/app.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Products"
+msgstr ""

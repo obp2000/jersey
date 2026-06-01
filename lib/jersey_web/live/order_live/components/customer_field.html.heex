@@ -1,0 +1,16 @@
+<div>
+  <label class="flex items-center justify-between gap-2">
+    <div class="label">{dgettext("customer", "Customer")}</div>
+    <div class="w-full border p-1">
+      <.live_select
+        field={@field}
+        value_mapper={&customer_value_mapper/1}
+        phx-target={@myself}
+        placeholder="Select customer"
+      />
+    </div>
+  </label>
+  <.error :for={msg <- Enum.map(@field.errors, &translate_error/1)}>
+    {msg}
+  </.error>
+</div>

@@ -1,0 +1,47 @@
+# Dependencies
+/deps
+/_build
+
+# Build outputs
+/release
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+.elixir_ls
+
+# Local files
+.env
+.env.local
+
+# Test files
+/cover
+/test
+
+# Documentation
+/doc
+
+# Logs
+*.log
+npm-debug.log
+
+# Temporary files
+/tmp
+*.swp
+*.swo
+
+# Node modules (if using npm)
+/assets/node_modules
+
+# Elixir generated files
+ebin
+*.beam
+*.ez
+
+# Releases
+*.tar
+*.tar.gz

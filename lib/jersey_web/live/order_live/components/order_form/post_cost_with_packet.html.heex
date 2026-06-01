@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    {dgettext("order", "Post cost with packet")}
+  </td>
+  <td colspan="2">
+    {@post_cost_with_packet}
+    <%= if @need_post_discount? do %>
+      - {@post_discount} ({dgettext("order", "post discount")})
+    <% end %>
+  </td>
+  <td align="right">{@total_post_cost}</td>
+  <td></td>
+  <td></td>
+</tr>

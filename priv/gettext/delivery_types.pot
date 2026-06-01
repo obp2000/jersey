@@ -1,0 +1,57 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new messages manually only if they're dynamic
+## messages that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+#
+msgid ""
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:22
+#, elixir-autogen, elixir-format
+msgid "baikal"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:23
+#, elixir-autogen, elixir-format
+msgid "cdek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:16
+#, elixir-autogen, elixir-format
+msgid "delovie"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:19
+#, elixir-autogen, elixir-format
+msgid "energy"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:18
+#, elixir-autogen, elixir-format
+msgid "kit"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:17
+#, elixir-autogen, elixir-format
+msgid "pek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:15
+#, elixir-autogen, elixir-format
+msgid "pochta"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:21
+#, elixir-autogen, elixir-format
+msgid "ratek"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:20
+#, elixir-autogen, elixir-format
+msgid "zhde"
+msgstr ""

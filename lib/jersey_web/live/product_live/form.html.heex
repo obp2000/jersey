@@ -1,0 +1,101 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    {@page_title} {dgettext("product", "Id")} {Phoenix.HTML.Form.normalize_value(
+      "text",
+      @form[:id].value
+    )}
+  </.header>
+  <.form for={@form} id="product-form" phx-change="validate" phx-submit="save">
+    <%!-- {inspect @form[:prices].value} --%>
+    <div class="grid grid-cols-6 gap-2 mt-2">
+      <img alt="product image" src={@product.image} class="row-span-2" />
+      <div class="col-span-2">
+        <.input field={@form[:name]} label={String.capitalize(dgettext("product", "Name"))} />
+      </div>
+      <.input
+        field={@form[:price]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Price"))}
+      />
+      <.input
+        field={@form[:density]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Density"))}
+      />
+      <.input
+        field={@form[:width]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Width"))}
+      />
+      <.input
+        field={@form[:weight_for_count]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Weight for count"))}
+      />
+      <.input
+        field={@form[:length_for_count]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Length for count"))}
+      />
+      <.input
+        field={@form[:density_for_count]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Density for count"))}
+        disabled
+      />
+      <.input
+        field={@form[:price_pre]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Price pre"))}
+      />
+      <.input
+        field={@form[:dollar_price]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Dollar price"))}
+      />
+      <.input
+        field={@form[:dollar_rate]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Dollar rate"))}
+      />
+      <.input
+        field={@form[:density_shop]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Density shop"))}
+      />
+      <.input
+        field={@form[:width_shop]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Width shop"))}
+      />
+      <.input
+        field={@form[:weight]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Weight"))}
+      />
+      <.input
+        field={@form[:meters_in_roll]}
+        type="number"
+        label={String.capitalize(dgettext("product", "Meters in roll"))}
+        disabled
+      />
+    </div>
+    <div class="mt-2">
+      <.table id="prices_table" rows={@form[:prices].value}>
+        <:col :let={{price_coeff, _price}} label={dgettext("product", "Price Coeff")}>
+          {price_coeff}
+        </:col>
+        <:col :let={{_price_coeff, price}} label={dgettext("product", "Price")}>{price}</:col>
+      </.table>
+    </div>
+    <.image_field upload={@uploads.image} class="mt-2" />
+    <footer class="flex gap-2 mt-4">
+      <.button phx-disable-with={dgettext("product", "Saving...")} variant="primary">
+        {dgettext("product", "Save Product")}
+      </.button>
+      <.button navigate={return_path(@return_to, @product)}>
+        {dgettext("product", "Cancel")}
+      </.button>
+    </footer>
+  </.form>
+</Layouts.app>

@@ -1,0 +1,16 @@
+<tr>
+  <td>{dgettext("order", "Post cost")}</td>
+  <td><.input type="number" field={@field} /></td>
+  <td>
+    <button
+      :if={@can_count?}
+      type="button"
+      phx-click="set_post_cost"
+      class="btn btn-outline btn-sm"
+    >
+      {dgettext("order", "Count")}
+    </button>
+  </td>
+  <td></td>
+  <td></td>
+</tr>

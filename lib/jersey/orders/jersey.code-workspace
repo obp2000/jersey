@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../pento"
+		},
+		{
+			"path": "../../../../../react_on_rails"
+		},
+		{
+			"path": "../../../../tron_api"
+		}
+	],
+	"settings": {}
+}

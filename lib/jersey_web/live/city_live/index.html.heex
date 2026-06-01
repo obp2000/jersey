@@ -1,0 +1,33 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    {dgettext("city", "Listing Cities")}
+    <:actions>
+      <.button variant="primary" navigate={~p"/cities/new"}>
+        <.icon name="hero-plus" /> {dgettext("city", "New City")}
+      </.button>
+    </:actions>
+  </.header>
+
+  <.table
+    id="cities"
+    rows={@streams.cities}
+    row_click={fn {_id, city} -> JS.navigate(~p"/cities/#{city}") end}
+  >
+    <:col :let={{_id, city}} label={dgettext("city", "Pindex")}>{city.pindex}</:col>
+    <:col :let={{_id, city}} label={dgettext("city", "Name")}>{city.name}</:col>
+    <:action :let={{_id, city}}>
+      <div class="sr-only">
+        <.link navigate={~p"/cities/#{city}"}>{dgettext("city", "Show")}</.link>
+      </div>
+      <.link navigate={~p"/cities/#{city}/edit"}>{dgettext("city", "Edit")}</.link>
+    </:action>
+    <:action :let={{id, city}}>
+      <.link
+        phx-click={JS.push("delete", value: %{id: city.id}) |> hide("##{id}")}
+        data-confirm={dgettext("city", "Are you sure?")}
+      >
+        {dgettext("city", "Delete")}
+      </.link>
+    </:action>
+  </.table>
+</Layouts.app>

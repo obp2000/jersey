@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <input type="hidden" name="order[order_items_drop][]" />
+    <button
+      type="button"
+      name="order[order_items_sort][]"
+      value="new"
+      phx-click={JS.dispatch("change")}
+      class="btn btn-outline btn-sm my-2"
+    >
+      <.icon name="hero-plus" class="w-4 h-4" /> {dgettext("order", "Add order item")}
+    </button>
+  </td>
+</tr>

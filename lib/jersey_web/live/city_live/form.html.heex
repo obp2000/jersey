@@ -1,0 +1,37 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    {@page_title}
+  </.header>
+  <.form
+    for={@form}
+    id="city-form"
+    phx-change="validate"
+    phx-submit="save"
+    class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md"
+  >
+    <.input
+      field={@form[:pindex]}
+      label={String.capitalize(dgettext("city", "pindex"))}
+      class="w-full px-3 py-2 border rounded-md"
+    />
+    <.input
+      field={@form[:name]}
+      label={String.capitalize(dgettext("city", "name"))}
+      class="w-full px-3 py-2 border rounded-md"
+    />
+    <footer class="flex justify-end gap-3 mt-6 pt-4">
+      <.button
+        navigate={return_path(@return_to, @city)}
+        class="px-4 py-2 text-gray-700 hover:text-gray-900"
+      >
+        {dgettext("city", "Cancel")}
+      </.button>
+      <.button
+        phx-disable-with={dgettext("city", "Saving...")}
+        class="px-4 py-2 bg-blue-600 text-white rounded-md cursor-pointer hover:bg-blue-700"
+      >
+        {dgettext("city", "Save City")}
+      </.button>
+    </footer>
+  </.form>
+</Layouts.app>

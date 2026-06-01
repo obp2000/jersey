@@ -1,0 +1,31 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    {dgettext("product", "Product %{id}", id: @product.id)}
+    <:actions>
+      <.button navigate={~p"/products"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/products/#{@product}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> {dgettext("product", "Edit product")}
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title={dgettext("product", "Name")}>{@product.name}</:item>
+    <:item title={dgettext("product", "Price")}>{@product.price}</:item>
+    <:item title={dgettext("product", "Weight")}>{@product.weight}</:item>
+    <:item title={dgettext("product", "Width")}>{@product.width}</:item>
+    <:item title={dgettext("product", "Density")}>{@product.density}</:item>
+    <:item title={dgettext("product", "Dollar price")}>{@product.dollar_price}</:item>
+    <:item title={dgettext("product", "Dollar rate")}>{@product.dollar_rate}</:item>
+    <:item title={dgettext("product", "Width shop")}>{@product.width_shop}</:item>
+    <:item title={dgettext("product", "Density shop")}>{@product.density_shop}</:item>
+    <:item title={dgettext("product", "Weight for count")}>{@product.weight_for_count}</:item>
+    <:item title={dgettext("product", "Length for count")}>{@product.length_for_count}</:item>
+    <:item title={dgettext("product", "Price pre")}>{@product.price_pre}</:item>
+  </.list>
+  <div>
+    <img alt="product image" width="200" src={@product.image} />
+  </div>
+</Layouts.app>

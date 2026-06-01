@@ -1,0 +1,158 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100 != 11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10||n%100>=20) ? 1 : 2);\n"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:22
+#: lib/jersey_web/live/customer_live/show.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Address"
+msgstr "Адрес"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:33
+#, elixir-autogen, elixir-format
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:34
+#, elixir-autogen, elixir-format
+msgid "Cancel"
+msgstr "Отмена"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:19
+#: lib/jersey_web/live/customer_live/show.html.heex:18
+#, elixir-autogen, elixir-format
+msgid "City"
+msgstr "Город"
+
+#: lib/jersey_web/live/customer_live/show.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Customer %{id}"
+msgstr "Клиент %{id}"
+
+#: lib/jersey_web/live/customer_live/form.ex:76
+#, elixir-autogen, elixir-format
+msgid "Customer created successfully"
+msgstr "Клиент успешно создан"
+
+#: lib/jersey_web/live/customer_live/form.ex:63
+#, elixir-autogen, elixir-format
+msgid "Customer updated successfully"
+msgstr "Клиент успешно обновлён"
+
+#: lib/jersey_web/components/layouts/app.html.heex:13
+#, elixir-autogen, elixir-format
+msgid "Customers"
+msgstr "Клиенты"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:35
+#, elixir-autogen, elixir-format
+msgid "Delete"
+msgstr "Удалить"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "Edit"
+msgstr "Редактировать"
+
+#: lib/jersey_web/live/customer_live/form.ex:23
+#, elixir-autogen, elixir-format
+msgid "Edit Customer"
+msgstr "Редактировать клиента"
+
+#: lib/jersey_web/live/customer_live/show.html.heex:10
+#, elixir-autogen, elixir-format
+msgid "Edit customer"
+msgstr "Редактировать клиента"
+
+#: lib/jersey_web/live/customer_live/index.ex:10
+#: lib/jersey_web/live/customer_live/index.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "Listing Customers"
+msgstr "Список клиентов"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:18
+#: lib/jersey_web/live/customer_live/show.html.heex:17
+#, elixir-autogen, elixir-format
+msgid "Name"
+msgstr "Имя"
+
+#: lib/jersey_web/live/customer_live/form.ex:32
+#: lib/jersey_web/live/customer_live/index.html.heex:7
+#, elixir-autogen, elixir-format
+msgid "New Customer"
+msgstr "Новый клиент"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:17
+#: lib/jersey_web/live/customer_live/show.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Nick"
+msgstr "Ник"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:31
+#, elixir-autogen, elixir-format
+msgid "Save Customer"
+msgstr "Сохранить клиента"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:30
+#, elixir-autogen, elixir-format
+msgid "Saving..."
+msgstr "Сохранение..."
+
+#: lib/jersey_web/live/customer_live/index.html.heex:26
+#, elixir-autogen, elixir-format
+msgid "Show"
+msgstr "Просмотр"
+
+#: lib/jersey_web/live/customer_live/show.ex:10
+#, elixir-autogen, elixir-format
+msgid "Show Customer"
+msgstr "Просмотр клиента"
+
+#: lib/jersey_web/live/customer_live/show.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "This is a customer record from your database."
+msgstr "Это запись клиента из вашей базы данных."
+
+#: lib/jersey_web/live/customer_live/form.html.heex:5
+#, elixir-autogen, elixir-format
+msgid "Use this form to manage customer records in your database."
+msgstr "Используйте эту форму для управления записями клиентов в вашей базе данных."
+
+#: lib/jersey_web/live/customer_live/form.html.heex:27
+#, elixir-autogen, elixir-format
+msgid "address"
+msgstr "адрес"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:21
+#, elixir-autogen, elixir-format
+msgid "city"
+msgstr "город"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:18
+#, elixir-autogen, elixir-format
+msgid "name"
+msgstr "имя"
+
+#: lib/jersey_web/live/customer_live/form.html.heex:13
+#, elixir-autogen, elixir-format
+msgid "nick"
+msgstr "ник"
+
+#: lib/jersey_web/live/customer_live/index.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "Id"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/customer_field.html.heex:3
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Customer"
+msgstr "Клиент"

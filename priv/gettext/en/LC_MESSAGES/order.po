@@ -1,0 +1,173 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT file changes into this file.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/jersey_web/live/order_live/components/order_form/add_order_item_button.html.heex:11
+#, elixir-autogen, elixir-format
+msgid "Add order item"
+msgstr "Add order item"
+
+#: lib/jersey_web/live/order_live/form.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Address"
+msgstr "Address"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_header.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Amount"
+msgstr "Amount"
+
+#: lib/jersey_web/live/order_live/form.html.heex:65
+#, elixir-autogen, elixir-format
+msgid "Cancel"
+msgstr "Cancel"
+
+#: lib/jersey_web/live/order_live/components/order_form/post_cost.html.heex:11
+#, elixir-autogen, elixir-format
+msgid "Count"
+msgstr "Count"
+
+#: lib/jersey_web/live/order_live/form.html.heex:15
+#, elixir-autogen, elixir-format
+msgid "Delivery address"
+msgstr "Delivery address"
+
+#: lib/jersey_web/live/order_live/components/order_form/delivery_type.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "Delivery type"
+msgstr "Delivery type"
+
+#: lib/jersey_web/live/order_live/form.ex:26
+#, elixir-autogen, elixir-format
+msgid "Edit Order N %{id}"
+msgstr "Edit Order N %{id}"
+
+#: lib/jersey_web/live/order_live/show.html.heex:10
+#, elixir-autogen, elixir-format
+msgid "Edit order"
+msgstr "Edit order"
+
+#: lib/jersey_web/live/order_live/components/order_form/gift.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Gift!"
+msgstr "Gift!"
+
+#: lib/jersey_web/live/order_live/index.ex:11
+#, elixir-autogen, elixir-format
+msgid "Listing Orders"
+msgstr "Listing Orders"
+
+#: lib/jersey_web/live/order_live/form.ex:35
+#: lib/jersey_web/live/order_live/index.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "New Order"
+msgstr "New Order"
+
+#: lib/jersey_web/live/order_live/components/order_form/if_no_order_items.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "No items yet"
+msgstr "No items yet"
+
+#: lib/jersey_web/live/order_live/form.ex:73
+#, elixir-autogen, elixir-format
+msgid "Order created successfully"
+msgstr "Order created successfully"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_totals.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Order items totals"
+msgstr "Order items totals"
+
+#: lib/jersey_web/live/order_live/form.ex:60
+#, elixir-autogen, elixir-format
+msgid "Order updated successfully"
+msgstr "Order updated successfully"
+
+#: lib/jersey_web/live/order_live/components/order_form/post_cost.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Post cost"
+msgstr "Post cost"
+
+#: lib/jersey_web/live/order_live/components/order_form/post_cost_with_packet.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Post cost with packet"
+msgstr "Post cost with packet"
+
+#: lib/jersey_web/live/order_live/components/order_form/packet.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Post packet"
+msgstr "Post packet"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_header.html.heex:5
+#, elixir-autogen, elixir-format
+msgid "Price"
+msgstr "Price"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_header.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Product"
+msgstr "Product"
+
+#: lib/jersey_web/live/order_live/components/order_form/samples.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Samples"
+msgstr "Samples"
+
+#: lib/jersey_web/live/order_live/form.html.heex:62
+#, elixir-autogen, elixir-format
+msgid "Save Order"
+msgstr "Save Order"
+
+#: lib/jersey_web/live/order_live/form.html.heex:61
+#, elixir-autogen, elixir-format
+msgid "Saving..."
+msgstr "Saving..."
+
+#: lib/jersey_web/live/order_live/components/order_form/delivery_type.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "Select delivery type"
+msgstr "Select delivery type"
+
+#: lib/jersey_web/live/order_live/components/order_form/packet.html.heex:8
+#, elixir-autogen, elixir-format
+msgid "Select post packet"
+msgstr "Select post packet"
+
+#: lib/jersey_web/live/order_live/show.ex:11
+#, elixir-autogen, elixir-format
+msgid "Show Order"
+msgstr "Show Order"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_header.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "Total price"
+msgstr "Total price"
+
+#: lib/jersey_web/live/order_live/components/order_form/order_items_header.html.heex:7
+#, elixir-autogen, elixir-format
+msgid "Total weight"
+msgstr "Total weight"
+
+#: lib/jersey_web/live/order_live/components/order_form/totals.html.heex:2
+#, elixir-autogen, elixir-format
+msgid "Totals"
+msgstr "Totals"
+
+#: lib/jersey_web/live/order_live/components/order_form/post_cost_with_packet.html.heex:8
+#, elixir-autogen, elixir-format
+msgid "post discount"
+msgstr "post discount"
+
+#: lib/jersey_web/components/layouts/app.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Orders"
+msgstr ""

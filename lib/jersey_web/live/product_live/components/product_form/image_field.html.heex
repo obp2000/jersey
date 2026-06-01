@@ -1,0 +1,13 @@
+<section
+  phx-drop-target={@upload.ref}
+  class={["phx-drop-target-active:scale-105 border border-blue-500 p-2 rounded mb-2", @class]}
+>
+  <.live_file_input upload={@upload} />
+  <article :for={entry <- @upload.entries} class="upload-entry">
+    <.upload_preview entry={entry} />
+    <.upload_progress entry={entry} />
+    <.cancel_upload_button entry={entry} />
+    <.upload_errors_list upload_errors={upload_errors(@upload, entry)} />
+  </article>
+  <.upload_errors_list upload_errors={upload_errors(@upload)} />
+</section>

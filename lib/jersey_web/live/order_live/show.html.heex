@@ -1,0 +1,18 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    Order {@order.id}
+    <:subtitle>This is a order record from your database.</:subtitle>
+    <:actions>
+      <.button navigate={~p"/orders"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/orders/#{@order}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> {dgettext("order", "Edit order")}
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title="Customer">{Customers.full_customer_name(@order.customer)}</:item>
+  </.list>
+</Layouts.app>

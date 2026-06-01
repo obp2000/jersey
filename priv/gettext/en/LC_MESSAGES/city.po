@@ -1,0 +1,121 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/jersey_web/live/city_live/form.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "name"
+msgstr "name"
+
+#: lib/jersey_web/live/city_live/form.html.heex:14
+#, elixir-autogen, elixir-format
+msgid "pindex"
+msgstr "pindex"
+
+#: lib/jersey_web/live/city_live/index.html.heex:27
+#, elixir-autogen, elixir-format
+msgid "Are you sure?"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/form.html.heex:27
+#, elixir-autogen, elixir-format
+msgid "Cancel"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/show.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "City %{id}"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/form.ex:64
+#, elixir-autogen, elixir-format
+msgid "City created successfully"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/form.ex:51
+#, elixir-autogen, elixir-format
+msgid "City updated successfully"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Delete"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.html.heex:22
+#, elixir-autogen, elixir-format
+msgid "Edit"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/form.ex:22
+#, elixir-autogen, elixir-format
+msgid "Edit City"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/show.html.heex:10
+#, elixir-autogen, elixir-format
+msgid "Edit city"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.ex:10
+#: lib/jersey_web/live/city_live/index.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Listing Cities"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.html.heex:17
+#: lib/jersey_web/live/city_live/show.html.heex:17
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Name"
+msgstr "name"
+
+#: lib/jersey_web/live/city_live/form.ex:31
+#: lib/jersey_web/live/city_live/index.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "New City"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.html.heex:16
+#: lib/jersey_web/live/city_live/show.html.heex:16
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Pindex"
+msgstr "pindex"
+
+#: lib/jersey_web/live/city_live/form.html.heex:33
+#, elixir-autogen, elixir-format
+msgid "Save City"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/form.html.heex:30
+#, elixir-autogen, elixir-format
+msgid "Saving..."
+msgstr ""
+
+#: lib/jersey_web/live/city_live/index.html.heex:20
+#, elixir-autogen, elixir-format
+msgid "Show"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/show.ex:10
+#, elixir-autogen, elixir-format
+msgid "Show City"
+msgstr ""
+
+#: lib/jersey_web/live/city_live/show.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "This is a city record from your database."
+msgstr ""
+
+#: lib/jersey_web/components/layouts/app.html.heex:10
+#, elixir-autogen, elixir-format
+msgid "Cities"
+msgstr ""

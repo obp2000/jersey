@@ -1,0 +1,211 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jersey Products\n"
+"POT-Creation-Date: 2025-01-01 00:00+0000\n"
+"PO-Revision-Date: 2025-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#: lib/jersey_web/live/product_live/index.ex:11
+#, elixir-autogen
+msgid "Listing Products"
+msgstr "Список товаров"
+
+#: lib/jersey_web/live/product_live/form.ex:26
+#, elixir-autogen
+msgid "Edit Product"
+msgstr "Редактировать товар"
+
+#: lib/jersey_web/live/product_live/form.ex:36
+#: lib/jersey_web/live/product_live/index.html.heex:6
+#, elixir-autogen
+msgid "New Product"
+msgstr "Новый товар"
+
+#: lib/jersey_web/live/product_live/show.ex:10
+#, elixir-autogen
+msgid "Show Product"
+msgstr "Товар"
+
+#: lib/jersey_web/live/product_live/form.html.heex:13
+#: lib/jersey_web/live/product_live/index.html.heex:17
+#: lib/jersey_web/live/product_live/show.html.heex:15
+#, elixir-autogen
+msgid "Name"
+msgstr "Название"
+
+#: lib/jersey_web/live/product_live/form.html.heex:18
+#: lib/jersey_web/live/product_live/form.html.heex:88
+#: lib/jersey_web/live/product_live/index.html.heex:18
+#: lib/jersey_web/live/product_live/show.html.heex:16
+#, elixir-autogen
+msgid "Price"
+msgstr "Цена"
+
+#: lib/jersey_web/live/product_live/form.html.heex:28
+#: lib/jersey_web/live/product_live/index.html.heex:19
+#: lib/jersey_web/live/product_live/show.html.heex:18
+#, elixir-autogen
+msgid "Width"
+msgstr "Ширина"
+
+#: lib/jersey_web/live/product_live/form.html.heex:23
+#: lib/jersey_web/live/product_live/index.html.heex:20
+#: lib/jersey_web/live/product_live/show.html.heex:19
+#, elixir-autogen
+msgid "Density"
+msgstr "Плотность"
+
+#: lib/jersey_web/live/product_live/index.html.heex:21
+#, elixir-autogen
+msgid "Inserted at"
+msgstr "Дата создания"
+
+#: lib/jersey_web/live/product_live/index.html.heex:26
+#, elixir-autogen
+msgid "Show"
+msgstr "Показать"
+
+#: lib/jersey_web/live/product_live/index.html.heex:28
+#, elixir-autogen
+msgid "Edit"
+msgstr "Изменить"
+
+#: lib/jersey_web/live/product_live/index.html.heex:35
+#, elixir-autogen
+msgid "Delete"
+msgstr "Удалить"
+
+#: lib/jersey_web/live/product_live/index.html.heex:33
+#, elixir-autogen
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: lib/jersey_web/live/product_live/show.html.heex:3
+#, elixir-autogen
+msgid "Product %{id}"
+msgstr "Товар %{id}"
+
+#: lib/jersey_web/live/product_live/show.html.heex:9
+#, elixir-autogen
+msgid "Edit product"
+msgstr "Редактировать товар"
+
+#: lib/jersey_web/live/product_live/form.html.heex:74
+#: lib/jersey_web/live/product_live/show.html.heex:17
+#, elixir-autogen
+msgid "Weight"
+msgstr "Вес"
+
+#: lib/jersey_web/live/product_live/form.html.heex:54
+#: lib/jersey_web/live/product_live/show.html.heex:20
+#, elixir-autogen
+msgid "Dollar price"
+msgstr "Цена в долларах"
+
+#: lib/jersey_web/live/product_live/form.html.heex:59
+#: lib/jersey_web/live/product_live/show.html.heex:21
+#, elixir-autogen
+msgid "Dollar rate"
+msgstr "Курс доллара"
+
+#: lib/jersey_web/live/product_live/form.html.heex:69
+#: lib/jersey_web/live/product_live/show.html.heex:22
+#, elixir-autogen
+msgid "Width shop"
+msgstr "Ширина (магазин)"
+
+#: lib/jersey_web/live/product_live/form.html.heex:64
+#: lib/jersey_web/live/product_live/show.html.heex:23
+#, elixir-autogen
+msgid "Density shop"
+msgstr "Плотность (магазин)"
+
+#: lib/jersey_web/live/product_live/form.html.heex:33
+#: lib/jersey_web/live/product_live/show.html.heex:24
+#, elixir-autogen
+msgid "Weight for count"
+msgstr "Вес для расчета"
+
+#: lib/jersey_web/live/product_live/form.html.heex:38
+#: lib/jersey_web/live/product_live/show.html.heex:25
+#, elixir-autogen
+msgid "Length for count"
+msgstr "Длина для расчета"
+
+#: lib/jersey_web/live/product_live/form.html.heex:49
+#: lib/jersey_web/live/product_live/show.html.heex:26
+#, elixir-autogen
+msgid "Price pre"
+msgstr "Предварительная цена"
+
+#: lib/jersey_web/live/product_live/form.html.heex:3
+#: lib/jersey_web/live/product_live/index.html.heex:16
+#, elixir-autogen
+msgid "Id"
+msgstr "ID"
+
+#: lib/jersey_web/live/product_live/form.html.heex:43
+#, elixir-autogen
+msgid "Density for count"
+msgstr "Плотность для расчета"
+
+#: lib/jersey_web/live/product_live/form.html.heex:85
+#, elixir-autogen
+msgid "Price Coeff"
+msgstr "Коэфф. цены"
+
+#: lib/jersey_web/live/product_live/form.html.heex:79
+#, elixir-autogen
+msgid "Meters in roll"
+msgstr "Метров в рулоне"
+
+#: lib/jersey_web/live/product_live/form.html.heex:93
+#, elixir-autogen
+msgid "Saving..."
+msgstr "Сохранение..."
+
+#: lib/jersey_web/live/product_live/form.html.heex:94
+#, elixir-autogen
+msgid "Save Product"
+msgstr "Сохранить товар"
+
+#: lib/jersey_web/live/product_live/form.html.heex:97
+#, elixir-autogen
+msgid "Cancel"
+msgstr "Отмена"
+
+#: lib/jersey_web/live/product_live/form.ex:81
+#, elixir-autogen
+msgid "Product updated successfully"
+msgstr "Товар успешно обновлён"
+
+#: lib/jersey_web/live/product_live/form.ex:98
+#, elixir-autogen
+msgid "Product created successfully"
+msgstr "Товар успешно создан"
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:60
+#, elixir-autogen
+msgid "File is too large"
+msgstr "Файл слишком большой"
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:63
+#, elixir-autogen
+msgid "You have selected too many files"
+msgstr "Вы выбрали слишком много файлов"
+
+#: lib/jersey_web/live/product_live/components/product_form.ex:66
+#, elixir-autogen
+msgid "You have selected an unacceptable file type"
+msgstr "Выбран неподдерживаемый тип файла"
+
+#: lib/jersey_web/components/layouts/app.html.heex:16
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Products"
+msgstr "Товары"

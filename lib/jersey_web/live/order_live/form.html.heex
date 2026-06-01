@@ -1,0 +1,69 @@
+<Layouts.app flash={@flash}>
+  <.header>{@page_title}</.header>
+  <%!-- {inspect(@form.source.errors)} --%>
+  <%!-- {inspect(@form[:can_count_post_cost?].value)} --%>
+  <%!-- {inspect(@form.source.changes)} --%>
+  <%!-- {inspect List.first(@order.order_items).product} --%>
+  <.form for={@form} id="order-form" phx-change="validate" phx-submit="save">
+    <.live_component module={CustomerField} id="customer_field" field={@form[:customer]} />
+    <%!-- {@form[:customer_id].value} --%>
+    <div class="flex items-center justify-between gap-2">
+      <.delivery_type field={@form[:delivery_type]} />
+      <.input
+        field={@form[:address]}
+        type="text"
+        label={dgettext("order", "Delivery address")}
+        placeholder={dgettext("order", "Address")}
+      />
+    </div>
+    <div class="overflow-x-auto">
+      <table class="table-zebra table-auto">
+        <thead><.order_items_header /></thead>
+        <tbody>
+          <.if_no_order_items />
+          <.inputs_for :let={order_item} field={@form[:order_items]}>
+            <.order_item order_item={order_item} />
+          </.inputs_for>
+          <.add_order_item_button />
+          <.order_items_totals
+            order_items_price={@form[:order_items_price].value}
+            order_items_weight={@form[:order_items_weight].value}
+          />
+          <.gift
+            :if={@form[:need_gift?].value}
+            field={@form[:gift]}
+            weight={Order.gift_weight()}
+          />
+          <.samples weight={Order.samples_weight()} />
+          <.packet
+            field={@form[:packet]}
+            options={Order.packets()}
+            weight={Order.packet_weight()}
+          />
+          <.post_cost
+            field={@form[:post_cost]}
+            can_count?={@form[:can_count_post_cost?].value}
+          />
+          <.post_cost_with_packet
+            post_cost_with_packet={@form[:post_cost_with_packet].value}
+            need_post_discount?={@form[:need_post_discount?].value}
+            post_discount={@form[:post_discount].value}
+            total_post_cost={@form[:total_post_cost].value}
+          />
+          <.totals
+            total_price={@form[:total_price].value}
+            total_weight={@form[:total_weight].value}
+          />
+        </tbody>
+      </table>
+    </div>
+    <footer>
+      <.button phx-disable-with={dgettext("order", "Saving...")} variant="primary">
+        {dgettext("order", "Save Order")}
+      </.button>
+      <.button navigate={return_path(@return_to, @order)}>
+        {dgettext("order", "Cancel")}
+      </.button>
+    </footer>
+  </.form>
+</Layouts.app>

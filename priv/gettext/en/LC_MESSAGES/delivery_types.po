@@ -1,0 +1,57 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:22
+#, elixir-autogen, elixir-format
+msgid "baikal"
+msgstr "Baikal Service"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:23
+#, elixir-autogen, elixir-format
+msgid "cdek"
+msgstr "SDEK"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:16
+#, elixir-autogen, elixir-format
+msgid "delovie"
+msgstr "Buisness Lines"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:19
+#, elixir-autogen, elixir-format
+msgid "energy"
+msgstr "Energy"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:18
+#, elixir-autogen, elixir-format
+msgid "kit"
+msgstr "KIT"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:17
+#, elixir-autogen, elixir-format
+msgid "pek"
+msgstr "PEK"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:15
+#, elixir-autogen, elixir-format
+msgid "pochta"
+msgstr "Russian Post"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:21
+#, elixir-autogen, elixir-format
+msgid "ratek"
+msgstr "Ratek"
+
+#: lib/jersey_web/live/order_live/components/order_form.ex:20
+#, elixir-autogen, elixir-format
+msgid "zhde"
+msgstr "Railway Expedition"

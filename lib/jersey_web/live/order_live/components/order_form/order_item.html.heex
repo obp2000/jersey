@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <input type="hidden" name="order[order_items_sort][]" value={@order_item.index} />
+    <.live_component
+      module={ProductField}
+      id={"product_field_#{@order_item.index}"}
+      field={@order_item[:product]}
+    />
+    <%!-- {inspect @order_item.source}  --%>
+  </td>
+  <%!-- <td><.input type="number" field={@order_item[:product_id]} placeholder="product id" /></td> --%>
+  <td><.input type="number" field={@order_item[:amount]} placeholder="amount" /></td>
+  <%!-- <td align="right" class="p-2">
+    <%= if @order_item[:product].value do %>
+      {inspect @order_item[:product].value.price}
+    <% end %>
+  </td> --%>
+  <td><.input type="number" field={@order_item[:price]} placeholder="price" /></td>
+  <td align="right">{@order_item[:order_item_price].value}</td>
+  <td align="right">{@order_item[:order_item_weight].value}</td>
+  <td><.delete_order_item_button value={@order_item.index} /></td>
+</tr>

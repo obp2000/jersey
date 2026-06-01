@@ -1,0 +1,10 @@
+<button
+  type="button"
+  name="order[order_items_drop][]"
+  value={@value}
+  phx-click={JS.dispatch("change")}
+  class="btn btn-ghost btn-sm"
+  data-confirm="Are you sure?"
+>
+  <.icon name="hero-x-mark" class="w-5 h-5" />
+</button>

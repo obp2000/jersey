@@ -1,0 +1,19 @@
+<Layouts.app flash={@flash}>
+  <.header>
+    {dgettext("city", "City %{id}", id: @city.id)}
+    <:subtitle>{dgettext("city", "This is a city record from your database.")}</:subtitle>
+    <:actions>
+      <.button navigate={~p"/cities"}>
+        <.icon name="hero-arrow-left" />
+      </.button>
+      <.button variant="primary" navigate={~p"/cities/#{@city}/edit?return_to=show"}>
+        <.icon name="hero-pencil-square" /> {dgettext("city", "Edit city")}
+      </.button>
+    </:actions>
+  </.header>
+
+  <.list>
+    <:item title={dgettext("city", "Pindex")}>{@city.pindex}</:item>
+    <:item title={dgettext("city", "Name")}>{@city.name}</:item>
+  </.list>
+</Layouts.app>
