@@ -16,7 +16,7 @@ msgstr ""
 msgid "Add order item"
 msgstr "Добавить товар"
 
-#: lib/jersey_web/live/order_live/form.html.heex:16
+#: lib/jersey_web/live/order_live/form.html.heex:12
 #, elixir-autogen, elixir-format
 msgid "Address"
 msgstr "Адрес"
@@ -26,7 +26,7 @@ msgstr "Адрес"
 msgid "Amount"
 msgstr "Количество"
 
-#: lib/jersey_web/live/order_live/form.html.heex:65
+#: lib/jersey_web/live/order_live/form.html.heex:61
 #, elixir-autogen, elixir-format
 msgid "Cancel"
 msgstr "Отмена"
@@ -36,7 +36,7 @@ msgstr "Отмена"
 msgid "Count"
 msgstr "Рассчитать"
 
-#: lib/jersey_web/live/order_live/form.html.heex:15
+#: lib/jersey_web/live/order_live/form.html.heex:11
 #, elixir-autogen, elixir-format
 msgid "Delivery address"
 msgstr "Адрес доставки"
@@ -51,7 +51,7 @@ msgstr "Тип доставки"
 msgid "Edit Order N %{id}"
 msgstr "Редактировать заказ № %{id}"
 
-#: lib/jersey_web/live/order_live/show.html.heex:10
+#: lib/jersey_web/live/order_live/show.html.heex:9
 #, elixir-autogen, elixir-format
 msgid "Edit order"
 msgstr "Редактировать заказ"
@@ -122,12 +122,12 @@ msgstr "Товар"
 msgid "Samples"
 msgstr "Образцы"
 
-#: lib/jersey_web/live/order_live/form.html.heex:62
+#: lib/jersey_web/live/order_live/form.html.heex:58
 #, elixir-autogen, elixir-format
 msgid "Save Order"
 msgstr "Сохранить заказ"
 
-#: lib/jersey_web/live/order_live/form.html.heex:61
+#: lib/jersey_web/live/order_live/form.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr "Сохранение..."
@@ -171,3 +171,49 @@ msgstr "скидка на почту"
 #, elixir-autogen, elixir-format
 msgid "Orders"
 msgstr "Заказы"
+
+#: lib/jersey_web/live/order_live/index.html.heex:35
+#, elixir-autogen, elixir-format
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: lib/jersey_web/live/order_live/index.html.heex:19
+#: lib/jersey_web/live/order_live/show.html.heex:15
+#, elixir-autogen, elixir-format
+msgid "Customer"
+msgstr "Клиент"
+
+#: lib/jersey_web/live/order_live/index.html.heex:37
+#, elixir-autogen, elixir-format
+msgid "Delete"
+msgstr "Удалить"
+
+#: lib/jersey_web/live/order_live/index.html.heex:30
+#, elixir-autogen, elixir-format
+msgid "Edit"
+msgstr "Редактировать"
+
+#: lib/jersey_web/live/order_live/index.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Id"
+msgstr "Id"
+
+#: lib/jersey_web/live/order_live/index.html.heex:22
+#, elixir-autogen, elixir-format
+msgid "Inserted at"
+msgstr "Создан"
+
+#: lib/jersey_web/live/order_live/index.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "Show"
+msgstr "Прсмотр"
+
+#: lib/jersey_web/live/order_live/show.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Order"
+msgstr "Заказ"
+
+#: lib/jersey_web/live/order_live/index.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "Order sum"
+msgstr "Сумма"

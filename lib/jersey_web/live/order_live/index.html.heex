@@ -13,25 +13,29 @@
     rows={@streams.orders}
     row_click={fn {_id, order} -> JS.navigate(~p"/orders/#{order}") end}
   >
-    <:col :let={{_id, order}} label="Id">
+    <:col :let={{_id, order}} label={dgettext("order", "Id")}>
       {order.id}
     </:col>
-    <:col :let={{_id, order}} label="Customer">
+    <:col :let={{_id, order}} label={dgettext("order", "Customer")}>
       {Customers.full_customer_name(order.customer)}
     </:col>
-    <:col :let={{_id, order}} label="Inserted at">{order.inserted_at}</:col>
+    <:col :let={{_id, order}} label={dgettext("order", "Inserted at")}>{order.inserted_at}</:col>
+    <:col :let={{_id, order}} label={dgettext("order", "Order sum")}>{order.order_items_price}</:col>
+    <:col :let={{_id, order}} label={dgettext("order", "Total price")}>{order.total_price}</:col>
+
     <:action :let={{_id, order}}>
       <div class="sr-only">
-        <.link navigate={~p"/orders/#{order}"}>Show</.link>
+
+        <.link navigate={~p"/orders/#{order}"}>{dgettext("order", "Show")}</.link>
       </div>
-      <.link navigate={~p"/orders/#{order}/edit"}>Edit</.link>
+      <.link navigate={~p"/orders/#{order}/edit"}>{dgettext("order", "Edit")}</.link>
     </:action>
     <:action :let={{id, order}}>
       <.link
         phx-click={JS.push("delete", value: %{id: order.id}) |> hide("##{id}")}
-        data-confirm="Are you sure?"
+        data-confirm={dgettext("order", "Are you sure?")}
       >
-        Delete
+        {dgettext("order", "Delete")}
       </.link>
     </:action>
   </.table>

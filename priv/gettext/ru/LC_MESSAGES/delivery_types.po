@@ -14,44 +14,44 @@ msgstr ""
 #: lib/jersey_web/live/order_live/components/order_form.ex:22
 #, elixir-autogen, elixir-format
 msgid "baikal"
-msgstr ""
+msgstr "Байкал Сервис"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:23
 #, elixir-autogen, elixir-format
 msgid "cdek"
-msgstr ""
+msgstr "СДЕК"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:16
 #, elixir-autogen, elixir-format
 msgid "delovie"
-msgstr ""
+msgstr "Деловый линии"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:19
 #, elixir-autogen, elixir-format
 msgid "energy"
-msgstr ""
+msgstr "Энергия"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:18
 #, elixir-autogen, elixir-format
 msgid "kit"
-msgstr ""
+msgstr "Кит"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:17
 #, elixir-autogen, elixir-format
 msgid "pek"
-msgstr ""
+msgstr "ПЭК"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:15
 #, elixir-autogen, elixir-format
 msgid "pochta"
-msgstr ""
+msgstr "Почта России"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:21
 #, elixir-autogen, elixir-format
 msgid "ratek"
-msgstr ""
+msgstr "Ратек"
 
 #: lib/jersey_web/live/order_live/components/order_form.ex:20
 #, elixir-autogen, elixir-format
 msgid "zhde"
-msgstr ""
+msgstr "ЖелДорЭкспедиция"

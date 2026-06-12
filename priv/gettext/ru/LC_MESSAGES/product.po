@@ -209,3 +209,8 @@ msgstr "Выбран неподдерживаемый тип файла"
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Products"
 msgstr "Товары"
+
+#: lib/jersey_web/live/order_live/components/product_field.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "Select product"
+msgstr "Выберите продукт"

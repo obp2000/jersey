@@ -22,7 +22,7 @@ defmodule Jersey.Products.Product.Calculation do
 
   def density_for_count(weight_for_count, length_for_count, width) do
     if is_nil(weight_for_count) or is_nil(length_for_count) or is_nil(width) or
-         length_for_count == 0 or width == 0 do
+         Decimal.equal?(length_for_count, 0) or Decimal.equal?(width, 0) do
       Decimal.new(0)
     else
       weight_for_count
@@ -34,7 +34,8 @@ defmodule Jersey.Products.Product.Calculation do
   end
 
   def meters_in_roll(weight, density, width) do
-    if is_nil(weight) or is_nil(density) or is_nil(width) or density == 0 or width == 0 do
+    if is_nil(weight) or is_nil(density) or is_nil(width) or
+         Decimal.equal?(density, 0) or Decimal.equal?(width, 0) do
       Decimal.new(0)
     else
       weight

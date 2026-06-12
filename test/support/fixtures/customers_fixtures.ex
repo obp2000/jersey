@@ -4,6 +4,8 @@ defmodule Jersey.CustomersFixtures do
   entities via the `Jersey.Customers` context.
   """
 
+  alias Jersey.Customers
+
   @doc """
   Generate a customer.
   """
@@ -14,7 +16,7 @@ defmodule Jersey.CustomersFixtures do
         name: "some name",
         nick: "some nick"
       })
-      |> Jersey.Customers.create_customer()
+      |> Customers.create_customer()
 
     customer
   end
@@ -26,10 +28,10 @@ defmodule Jersey.CustomersFixtures do
     {:ok, city} =
       attrs
       |> Enum.into(%{
-        name: "some name",
+        name: "Saratov",
         pindex: "123456"
       })
-      |> Jersey.Customers.create_city()
+      |> Customers.create_city()
 
     city
   end

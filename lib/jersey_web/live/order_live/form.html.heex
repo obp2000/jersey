@@ -1,12 +1,8 @@
 <Layouts.app flash={@flash}>
   <.header>{@page_title}</.header>
   <%!-- {inspect(@form.source.errors)} --%>
-  <%!-- {inspect(@form[:can_count_post_cost?].value)} --%>
-  <%!-- {inspect(@form.source.changes)} --%>
-  <%!-- {inspect List.first(@order.order_items).product} --%>
   <.form for={@form} id="order-form" phx-change="validate" phx-submit="save">
     <.live_component module={CustomerField} id="customer_field" field={@form[:customer]} />
-    <%!-- {@form[:customer_id].value} --%>
     <div class="flex items-center justify-between gap-2">
       <.delivery_type field={@form[:delivery_type]} />
       <.input
@@ -16,7 +12,7 @@
         placeholder={dgettext("order", "Address")}
       />
     </div>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto mb-2">
       <table class="table-zebra table-auto">
         <thead><.order_items_header /></thead>
         <tbody>

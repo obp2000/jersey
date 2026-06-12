@@ -12,10 +12,9 @@ defmodule Jersey.ProductsFixtures do
       attrs
       |> Enum.into(%{
         name: "some name",
-        price: 42
+        price: 310
       })
       |> Jersey.Products.create_product()
-
 
     product
   end

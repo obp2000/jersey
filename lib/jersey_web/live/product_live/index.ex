@@ -38,7 +38,7 @@ defmodule JerseyWeb.ProductLive.Index do
     {:noreply,
      case Products.delete_product(product) do
        {:ok, _product} ->
-         stream_delete(socket, :products, product)
+         stream_delete(socket, :entries, product)
 
        {:error, %Ecto.Changeset{errors: errors} = _changeset} ->
          put_flash(socket, :error, errors[:order_items] |> translate_error())

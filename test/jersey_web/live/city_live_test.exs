@@ -82,6 +82,22 @@ defmodule JerseyWeb.CityLiveTest do
 
       refute has_element?(index_live, "#cities-#{city.id}")
     end
+
+    test "handles delete error when city has associated customers", %{conn: conn} do
+      # Create a city with customers to trigger a delete error
+      city = city_fixture()
+      _customer = customer_fixture(%{city_id: city.id})
+
+      {:ok, index_live, _html} = live(conn, ~p"/cities")
+
+      # Try to delete the city - it should fail due to associated customers
+      index_live
+      |> element("#cities-#{city.id} a", "Delete")
+      |> render_click()
+
+      # The city should still be present
+      assert has_element?(index_live, "#cities-#{city.id}")
+    end
   end
 
   describe "Show" do

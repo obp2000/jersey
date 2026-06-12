@@ -12,7 +12,6 @@ defmodule Jersey.Customers.City do
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
   def changeset(city, attrs \\ %{}) do
     city
     |> cast(attrs, [:pindex, :name])

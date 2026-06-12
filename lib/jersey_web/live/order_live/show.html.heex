@@ -1,7 +1,6 @@
 <Layouts.app flash={@flash}>
   <.header>
-    Order {@order.id}
-    <:subtitle>This is a order record from your database.</:subtitle>
+    {dgettext("order", "Order")} {@order.id}
     <:actions>
       <.button navigate={~p"/orders"}>
         <.icon name="hero-arrow-left" />
@@ -13,6 +12,6 @@
   </.header>
 
   <.list>
-    <:item title="Customer">{Customers.full_customer_name(@order.customer)}</:item>
+    <:item title={dgettext("order", "Customer")}>{Customers.full_customer_name(@order.customer)}</:item>
   </.list>
 </Layouts.app>

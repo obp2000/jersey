@@ -1,9 +1,8 @@
 defmodule JerseyWeb.CustomerLive.Form do
   use JerseyWeb, :live_view
-  import LiveSelect
-
   alias Jersey.Customers
   alias Customers.Customer
+  alias JerseyWeb.CityField
 
   @impl true
   def mount(params, _session, socket) do
@@ -44,17 +43,6 @@ defmodule JerseyWeb.CustomerLive.Form do
     save_customer(socket, socket.assigns.live_action, customer_params)
   end
 
-  @impl true
-  def handle_event(
-        "live_select_change",
-        %{"text" => text, "id" => live_select_id},
-        socket
-      ) do
-    options = Customers.search_cities(text) |> Enum.map(&city_option/1)
-    send_update(LiveSelect.Component, id: live_select_id, options: options)
-    {:noreply, socket}
-  end
-
   defp save_customer(socket, :edit, customer_params) do
     case Customers.update_customer(socket.assigns.customer, customer_params) do
       {:ok, customer} ->
@@ -83,22 +71,4 @@ defmodule JerseyWeb.CustomerLive.Form do
 
   defp return_path("index", _customer), do: ~p"/customers"
   defp return_path("show", customer), do: ~p"/customers/#{customer}"
-
-  def city_value_mapper(nil), do: nil
-  def city_value_mapper(""), do: nil
-
-  def city_value_mapper(id) when is_integer(id) or is_binary(id) do
-    Customers.get_city!(id) |> city_option()
-  end
-
-  def city_value_mapper(city) do
-    city |> city_option()
-  end
-
-  defp city_option(city) do
-    %{
-      label: Customers.full_city_name(city),
-      value: city.id
-    }
-  end
 end

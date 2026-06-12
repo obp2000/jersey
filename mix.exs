@@ -69,7 +69,8 @@ defmodule Jersey.MixProject do
       {:bandit, "~> 1.5"},
       {:scrivener_ecto, "~> 3.1"},
       {:live_select, "~> 1.7"},
-      {:atomize_keys, "~> 1.2"}
+      {:atomize_keys, "~> 1.2"},
+      {:mox, "~> 1.2"}
     ]
   end
 

@@ -9,6 +9,7 @@ defmodule Jersey.Customers do
   alias Jersey.Customers.{Customer, City}
 
   defdelegate full_city_name(city), to: City, as: :full_name
+  defdelegate full_customer_name(customer), to: Customer, as: :full_name
 
   @doc """
   Returns the list of customers.
@@ -108,18 +109,6 @@ defmodule Jersey.Customers do
     Customer.Query.search(text) |> Repo.all()
   end
 
-  def full_customer_name(%Customer{} = customer) do
-    Enum.reject(
-      [customer.nick, customer.name, full_city_name(customer.city), customer.address],
-      fn x ->
-        is_nil(x) or x == ""
-      end
-    )
-    |> Enum.join(" ")
-  end
-
-  def full_customer_name(_), do: ""
-
   alias Jersey.Customers.City
 
   @doc """
@@ -215,10 +204,4 @@ defmodule Jersey.Customers do
   def search_cities(text) do
     City.Query.search(text) |> Repo.all()
   end
-
-  def city_pindex(%City{} = city) do
-    city.pindex
-  end
-
-  def city_pindex(_), do: ""
 end

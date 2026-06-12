@@ -9,7 +9,6 @@ defmodule Jersey.Orders do
 
   defdelegate search_customers(text), to: Jersey.Customers
   defdelegate full_customer_name(customer), to: Jersey.Customers
-  defdelegate city_pindex(city), to: Jersey.Customers
   defdelegate get_customer!(id), to: Jersey.Customers
   defdelegate search_products(text), to: Jersey.Products
   defdelegate get_product!(id), to: Jersey.Products
@@ -18,19 +17,6 @@ defmodule Jersey.Orders do
   def change_order(order, attrs \\ %{}) do
     Order.changeset(order, attrs)
   end
-
-  # defp decode_order_attrs(attrs) do
-  #   if attrs["order_items"] do
-  #     order_items =
-  #       Enum.map(Map.values(attrs["order_items"]), fn order_item ->
-  #         Utils.maybe_decode_live_select_value(order_item, "product")
-  #       end)
-
-  #     Map.put(attrs, "order_items", order_items)
-  #   else
-  #     attrs
-  #   end
-  # end
 
   @doc """
   Returns the list of orders.
@@ -77,7 +63,7 @@ defmodule Jersey.Orders do
   """
   def create_order(attrs) do
     %Order{}
-    |> Order.changeset(attrs)
+    |> Order.save_changeset(attrs)
     |> Repo.insert()
   end
 
@@ -95,7 +81,7 @@ defmodule Jersey.Orders do
   """
   def update_order(%Order{} = order, attrs) do
     order
-    |> Order.changeset(attrs)
+    |> Order.save_changeset(attrs)
     |> Repo.update()
   end
 
@@ -142,7 +128,9 @@ defmodule Jersey.Orders do
       ** (Ecto.NoResultsError)
 
   """
-  def get_order_item!(id), do: Repo.get!(OrderItem, id)
+  def get_order_item!(id) do
+    Repo.get!(OrderItem, id) |> Repo.preload(:product)
+  end
 
   @doc """
   Creates a order_item.
@@ -158,7 +146,7 @@ defmodule Jersey.Orders do
   """
   def create_order_item(attrs) do
     %OrderItem{}
-    |> OrderItem.changeset(attrs)
+    |> OrderItem.save_changeset(attrs)
     |> Repo.insert()
   end
 
@@ -176,7 +164,7 @@ defmodule Jersey.Orders do
   """
   def update_order_item(%OrderItem{} = order_item, attrs) do
     order_item
-    |> OrderItem.changeset(attrs)
+    |> OrderItem.save_changeset(attrs)
     |> Repo.update()
   end
 

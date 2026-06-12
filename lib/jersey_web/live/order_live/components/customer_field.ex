@@ -2,9 +2,8 @@ defmodule JerseyWeb.CustomerField do
   use JerseyWeb, :live_component
   import LiveSelect
   alias Jersey.Orders
-  alias Jersey.Customers.Customer
-  # alias Jersey.Customers
-  # alias Jersey.Repo
+  alias Jersey.Customers.{Customer, City}
+  alias Jersey.Customers
 
   @impl true
   def handle_event("live_select_change", %{"text" => text, "id" => live_select_id}, socket) do
@@ -13,34 +12,30 @@ defmodule JerseyWeb.CustomerField do
     {:noreply, socket}
   end
 
-  defp customer_value_mapper(nil), do: nil
-  defp customer_value_mapper(""), do: nil
+  def customer_value_mapper(nil), do: nil
+  def customer_value_mapper(""), do: nil
 
-  defp customer_value_mapper(id) when is_integer(id) or is_binary(id) do
-    Orders.get_customer!(id) |> customer_option()
-  end
-
-  defp customer_value_mapper(%{city: _city} = customer) do
+  def customer_value_mapper(%{city: %City{}} = customer) do
     customer |> customer_option()
   end
 
-  defp customer_option(customer) do
+  def customer_value_mapper(%{city_id: city_id} = customer) when not is_nil(city_id) do
+    city = Customers.get_city!(city_id)
+    customer|> Map.put(:city, city) |> customer_option()
+  end
+
+  def customer_value_mapper(%{id: _id} = customer) do
+    customer |> customer_option()
+  end
+
+  def customer_value_mapper(_) do
+    %Customer{} |> customer_option()
+  end
+
+  def customer_option(customer) do
     %{
       label: Customer.full_name(customer),
       value: customer
-      # value: %{
-      #   id: customer.id,
-      #   nick: customer.nick,
-      #   name: customer.name,
-      #   city_id: customer.city_id,
-      #   # city: customer.city,
-      #   city: %{
-      #     id: customer.city.id,
-      #     pindex: customer.city.pindex,
-      #     name: customer.city.name
-      #   },
-      #   address: customer.address
-      # }
     }
   end
 end

@@ -22,7 +22,7 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:34
+#: lib/jersey_web/live/customer_live/form.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "Cancel"
 msgstr ""
@@ -38,12 +38,12 @@ msgstr ""
 msgid "Customer %{id}"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.ex:76
+#: lib/jersey_web/live/customer_live/form.ex:64
 #, elixir-autogen, elixir-format
 msgid "Customer created successfully"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.ex:63
+#: lib/jersey_web/live/customer_live/form.ex:51
 #, elixir-autogen, elixir-format
 msgid "Customer updated successfully"
 msgstr ""
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.ex:23
+#: lib/jersey_web/live/customer_live/form.ex:22
 #, elixir-autogen, elixir-format
 msgid "Edit Customer"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.ex:32
+#: lib/jersey_web/live/customer_live/form.ex:31
 #: lib/jersey_web/live/customer_live/index.html.heex:7
 #, elixir-autogen, elixir-format
 msgid "New Customer"
@@ -97,12 +97,12 @@ msgstr ""
 msgid "Nick"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:31
+#: lib/jersey_web/live/customer_live/form.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Save Customer"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:30
+#: lib/jersey_web/live/customer_live/form.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""
@@ -122,27 +122,22 @@ msgstr ""
 msgid "This is a customer record from your database."
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:5
-#, elixir-autogen, elixir-format
-msgid "Use this form to manage customer records in your database."
-msgstr ""
-
-#: lib/jersey_web/live/customer_live/form.html.heex:27
+#: lib/jersey_web/live/customer_live/form.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "address"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:21
+#: lib/jersey_web/live/customer_live/components/city_field.html.heex:2
 #, elixir-autogen, elixir-format
 msgid "city"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:18
+#: lib/jersey_web/live/customer_live/form.html.heex:12
 #, elixir-autogen, elixir-format
 msgid "name"
 msgstr ""
 
-#: lib/jersey_web/live/customer_live/form.html.heex:13
+#: lib/jersey_web/live/customer_live/form.html.heex:7
 #, elixir-autogen, elixir-format
 msgid "nick"
 msgstr ""
@@ -155,4 +150,9 @@ msgstr ""
 #: lib/jersey_web/live/order_live/components/customer_field.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Customer"
+msgstr ""
+
+#: lib/jersey_web/live/order_live/components/customer_field.html.heex:9
+#, elixir-autogen, elixir-format
+msgid "Select customer"
 msgstr ""

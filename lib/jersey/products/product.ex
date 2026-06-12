@@ -48,6 +48,7 @@ defmodule Jersey.Products.Product do
       :image
     ])
     |> validate_required([:name, :price])
+    |> validate_number(:price, greater_than: 0)
     |> foreign_key_constraint(:order_items,
       name: "order_items_product_id_fkey",
       message: "Cannot delete product: it has associated order items"

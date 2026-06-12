@@ -20,11 +20,11 @@ defmodule JerseyWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", JerseyWeb do
-    pipe_through :browser
+  # scope "/", JerseyWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :home
-  end
+  #   get "/", PageController, :home
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", JerseyWeb do
@@ -81,6 +81,7 @@ defmodule JerseyWeb.Router do
       live "/customers/:id", CustomerLive.Show, :show
       live "/customers/:id/edit", CustomerLive.Form, :edit
 
+      live "/", ProductLive.Index, :index
       live "/products", ProductLive.Index, :index
       live "/products/new", ProductLive.Form, :new
       live "/products/:id", ProductLive.Show, :show

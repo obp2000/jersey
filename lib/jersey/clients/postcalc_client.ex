@@ -3,12 +3,16 @@ defmodule Jersey.Clients.PostcalcClient do
   Client for interacting with the Postcalc API.
   """
 
+  alias Jersey.Clients.PostcalcClientBehaviour
   alias Req.Response
+
+  @behaviour PostcalcClientBehaviour
 
   @api_key Application.compile_env(:jersey, :postcalc_key)
   @base_url Application.compile_env(:jersey, :postcalc_url)
   @from_pindex Application.compile_env(:jersey, :from_pindex)
 
+  @impl PostcalcClientBehaviour
   def get_post_cost(pindex, weight) do
     params = [f: @from_pindex, t: pindex, w: weight, o: "json", v: 0, key: @api_key]
 
@@ -16,8 +20,23 @@ defmodule Jersey.Clients.PostcalcClient do
       {:ok, body} ->
         (body["Отправления"]["ЦеннаяПосылка"]["Тариф"] || "0") |> String.replace(",", ".")
 
+      {:error, _reason} ->
+        "0"
+    end
+  end
+
+  @postcalc_http_client Application.compile_env(:jersey, :postcalc_http_client, Req)
+
+  defp make_request(params) do
+    case @postcalc_http_client.get(@base_url, params: params) do
+      {:ok, %Response{status: status, body: body}} when status in 200..299 ->
+        {:ok, body}
+
+      {:ok, %Response{status: status, body: body}} ->
+        {:error, {status, body}}
+
       {:error, reason} ->
-        reason
+        {:error, reason}
     end
   end
 
@@ -126,17 +145,4 @@ defmodule Jersey.Clients.PostcalcClient do
   #      }
   #    }
   #  }}
-
-  defp make_request(params) do
-    case Req.get(@base_url, params: params) do
-      {:ok, %Response{status: status, body: body}} when status in 200..299 ->
-        {:ok, body}
-
-      {:ok, %Response{status: status, body: body}} ->
-        {:error, {status, body}}
-
-      {:error, reason} ->
-        {:error, reason}
-    end
-  end
 end

@@ -12,7 +12,7 @@ defmodule Jersey.Customers.Customer.Query do
   end
 
   def list(query \\ base()) do
-    query |> order_by(desc: :inserted_at) |> preload(:city)
+    query |> order_by(desc: :id) |> preload(:city)
   end
 
   def get!(id, query \\ base()) do

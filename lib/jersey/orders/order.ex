@@ -49,8 +49,7 @@ defmodule Jersey.Orders.Order do
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
-  def changeset(order, attrs) do
+  def base_changeset(order, attrs) do
     attrs = attrs |> Utils.maybe_decode_live_select_value("customer")
 
     order
@@ -62,11 +61,31 @@ defmodule Jersey.Orders.Order do
       :delivery_type
     ])
     |> validate_inclusion(:packet, @packets)
-    |> cast_assoc(:order_items, sort_param: :order_items_sort, drop_param: :order_items_drop)
-    |> foreign_key_constraint(:customer_id, name: "orders_customer_id_fkey")
+  end
+
+  def changeset(order, attrs) do
+    base_changeset(order, attrs)
     |> cast_assoc(:customer, with: &Customer.order_form_changeset/2)
+    |> cast_assoc(:order_items,
+      sort_param: :order_items_sort,
+      drop_param: :order_items_drop
+    )
     |> apply_calculations()
-    |> prepare_changes(&sync_customer_id/1)
+  end
+
+  def save_changeset(order, attrs) do
+    attrs = attrs |> Utils.maybe_decode_live_select_value("customer")
+
+    base_changeset(order, attrs)
+    |> cast_assoc(:order_items,
+      sort_param: :order_items_sort,
+      drop_param: :order_items_drop,
+      with: &OrderItem.save_changeset/2
+    )
+    |> maybe_set_customer_id(attrs)
+    |> cast(attrs, [:customer_id])
+    |> validate_required([:customer_id])
+    |> foreign_key_constraint(:customer_id, name: "orders_customer_id_fkey")
   end
 
   defp apply_calculations(changeset) do
@@ -94,13 +113,11 @@ defmodule Jersey.Orders.Order do
     |> put_change(:can_count_post_cost?, calculation.can_count_post_cost?)
   end
 
-  defp sync_customer_id(changeset) do
-    with {:ok, changed_customer} <- fetch_change(changeset, :customer),
-         {:ok, changed_customer_id} <- fetch_change(changed_customer, :id) do
-      changeset
-      |> put_change(:customer_id, changed_customer_id)
-      |> delete_change(:customer)
-    else
+  defp maybe_set_customer_id(changeset, attrs) do
+    customer_id = get_field(changeset, :customer_id)
+
+    case Map.get(attrs, "customer") || Map.get(attrs, :customer) do
+      %{id: id} when customer_id != id -> put_change(changeset, :customer_id, id)
       _ -> changeset
     end
   end
@@ -108,14 +125,14 @@ defmodule Jersey.Orders.Order do
   def set_post_cost_if_possible(changeset) do
     total_weight = get_field(changeset, :total_weight)
     customer = get_assoc(changeset, :customer, :struct)
+    can_count_post_cost? = get_field(changeset, :can_count_post_cost?)
 
-    calculation =
-      Calculation.with_post_cost_if_possible(
-        %{post_cost: get_field(changeset, :post_cost)},
-        customer,
-        total_weight
-      )
+    if can_count_post_cost? do
+      post_cost = Calculation.get_post_cost(customer, total_weight)
 
-    put_change(changeset, :post_cost, calculation.post_cost)
+      changeset |> put_change(:post_cost, post_cost) |> apply_calculations()
+    else
+      changeset
+    end
   end
 end

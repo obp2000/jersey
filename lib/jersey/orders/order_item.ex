@@ -17,34 +17,43 @@ defmodule Jersey.Orders.OrderItem do
     timestamps(type: :utc_datetime)
   end
 
-  def changeset(order_item, attrs) do
+  def base_changeset(order_item, attrs) do
     attrs = Jersey.Utils.maybe_decode_live_select_value(attrs, "product")
 
     order_item
-    |> cast(attrs, [:amount, :price])
+    |> cast(attrs, [:amount, :price, :order_id])
     |> validate_required([:amount, :price])
     |> validate_number(:amount, greater_than: 0)
     |> validate_number(:price, greater_than: 0)
-    |> foreign_key_constraint(:order_id)
-    |> foreign_key_constraint(:product_id)
-    |> unique_constraint([:order_id, :product_id], name: :order_items_order_id_product_id_index)
+  end
+
+  def changeset(order_item, attrs) do
+    base_changeset(order_item, attrs)
     # Cast product association to calculate totals (density/width) when product comes from Live select
     |> cast_assoc(:product)
     |> maybe_set_price_from_product()
     |> apply_calculations()
-    |> prepare_changes(&sync_product_id/1)
   end
 
-  def maybe_set_price_from_product(changeset) do
-    with {:ok, changed_product} <- fetch_change(changeset, :product),
-         {:ok, changed_product_price} when not is_nil(changed_product_price) <-
-           fetch_change(changed_product, :price) do
-      changeset
-      |> put_change(:price, changed_product_price)
-    else
-      _ -> changeset
-    end
+  def save_changeset(order_item, attrs) do
+    attrs = Jersey.Utils.maybe_decode_live_select_value(attrs, "product")
+
+    base_changeset(order_item, attrs)
+    |> foreign_key_constraint(:order_id)
+    |> maybe_set_product_id(attrs)
+    |> cast(attrs, [:product_id])
+    |> foreign_key_constraint(:product_id)
+    |> unique_constraint([:order_id, :product_id], name: :order_items_order_id_product_id_index)
   end
+
+  defp maybe_set_price_from_product(
+         %{changes: %{product: %{changes: %{price: price}}}} = changeset
+       )
+       when not is_nil(price) do
+    put_change(changeset, :price, price)
+  end
+
+  defp maybe_set_price_from_product(changeset), do: changeset
 
   defp apply_calculations(changeset) do
     amount = get_field(changeset, :amount)
@@ -59,11 +68,11 @@ defmodule Jersey.Orders.OrderItem do
     |> put_change(:order_item_weight, calculation.order_item_weight)
   end
 
-  defp sync_product_id(changeset) do
-    with {:ok, product} <- fetch_change(changeset, :product),
-         {:ok, product_id} <- fetch_change(product, :id) do
-      changeset |> put_change(:product_id, product_id) |> delete_change(:product)
-    else
+  defp maybe_set_product_id(changeset, attrs) do
+    product_id = get_field(changeset, :product_id)
+
+    case attrs["product"] do
+      %{id: id} when product_id != id -> put_change(changeset, :product_id, id)
       _ -> changeset
     end
   end

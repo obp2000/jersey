@@ -1,0 +1,10 @@
+<label class="flex gap-2">
+  <span class="label mb-1">{String.capitalize(dgettext("customer", "city"))}:</span>
+  <.live_select
+    field={@field}
+    value_mapper={&city_value_mapper/1}
+    phx-target={@myself}
+    placeholder={dgettext("city", "Select city")}
+  />
+</label>
+

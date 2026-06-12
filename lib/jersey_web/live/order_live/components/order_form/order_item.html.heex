@@ -6,7 +6,7 @@
       id={"product_field_#{@order_item.index}"}
       field={@order_item[:product]}
     />
-    <%!-- {inspect @order_item.source}  --%>
+    <%!-- {inspect @order_item.source.changes}  --%>
   </td>
   <%!-- <td><.input type="number" field={@order_item[:product_id]} placeholder="product id" /></td> --%>
   <td><.input type="number" field={@order_item[:amount]} placeholder="amount" /></td>

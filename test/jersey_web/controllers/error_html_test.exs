@@ -11,4 +11,12 @@ defmodule JerseyWeb.ErrorHTMLTest do
   test "renders 500.html" do
     assert render_to_string(JerseyWeb.ErrorHTML, "500", "html", []) == "Internal Server Error"
   end
+
+  test "renders 400.html" do
+    assert render_to_string(JerseyWeb.ErrorHTML, "400", "html", []) == "Bad Request"
+  end
+
+  test "renders 422.html" do
+    assert render_to_string(JerseyWeb.ErrorHTML, "422", "html", []) == "Unprocessable Content"
+  end
 end

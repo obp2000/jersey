@@ -119,3 +119,8 @@ msgstr "Запись города из базы данных."
 #, elixir-autogen, elixir-format
 msgid "Cities"
 msgstr "Города"
+
+#: lib/jersey_web/live/customer_live/components/city_field.html.heex:7
+#, elixir-autogen, elixir-format
+msgid "Select city"
+msgstr "Выберите город"

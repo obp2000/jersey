@@ -11,18 +11,18 @@ defmodule JerseyWeb.ProductField do
     {:noreply, socket}
   end
 
-  defp product_value_mapper(nil), do: nil
-  defp product_value_mapper(""), do: nil
+  def product_value_mapper(nil), do: nil
+  def product_value_mapper(""), do: nil
 
-  defp product_value_mapper(%Product{} = product) do
+  def product_value_mapper(%{id: _id} = product) do
     product |> product_option()
   end
 
-  defp product_value_mapper(_) do
+  def product_value_mapper(_) do
     %Product{} |> product_option()
   end
 
-  defp product_option(product) do
+  def product_option(product) do
     %{
       label: product.name,
       value: product

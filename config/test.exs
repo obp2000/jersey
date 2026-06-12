@@ -1,14 +1,12 @@
 import Config
 
 # Set Gettext default locale to English for tests
-config :jersey, JerseyWeb.Gettext,
-  default_locale: "en"
+config :jersey, JerseyWeb.Gettext, default_locale: "en"
 
 config :jersey, :locale, "en"
 
 # Only in tests, remove the complexity from the password hashing algorithm
 config :bcrypt_elixir, :log_rounds, 1
-
 
 # Configure your database
 #
@@ -49,3 +47,6 @@ config :phoenix_live_view,
 # Sort query params output of verified routes for robust url comparisons
 config :phoenix,
   sort_verified_routes_query_params: true
+
+# Use deterministic stub for Postcalc HTTP calls during tests
+config :jersey, :postcalc_http_client, Jersey.Clients.PostcalcClientStub

@@ -209,3 +209,8 @@ msgstr ""
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Products"
 msgstr "New Product"
+
+#: lib/jersey_web/live/order_live/components/product_field.html.heex:6
+#, elixir-autogen, elixir-format
+msgid "Select product"
+msgstr "Select product"

@@ -4,7 +4,7 @@ defmodule Jersey.Customers.Customer do
   alias Jersey.Customers.City
   alias Jersey.Orders.Order
 
-  @derive {Jason.Encoder, only: [:id, :nick, :name, :address, :city_id, :city]}
+  @derive {Jason.Encoder, only: [:id, :nick, :name, :address, :city_id]}
   schema "customers" do
     field :nick, :string
     field :name, :string
@@ -30,13 +30,15 @@ defmodule Jersey.Customers.Customer do
     |> cast_assoc(:city)
   end
 
-  def full_name(customer) do
+  def full_name(%{} = customer) do
+    city_full_name = Map.get(customer, :city) |> City.full_name()
+
     Enum.reject(
-      [customer.nick, customer.name, City.full_name(customer.city), customer.address],
-      fn x ->
-        is_nil(x) or x == ""
-      end
+      [customer.nick, customer.name, city_full_name, customer.address],
+      &(is_nil(&1) or &1 == "")
     )
     |> Enum.join(" ")
   end
+
+  def full_name(_), do: ""
 end

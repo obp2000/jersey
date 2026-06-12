@@ -1,14 +1,5 @@
 # lib/jersey/utils/params_helper.ex
 defmodule Jersey.Utils do
-  def parse_integer(nil, default), do: default
-
-  def parse_integer(value, default) do
-    case Integer.parse(value) do
-      {int, _} when int > 0 -> int
-      _ -> default
-    end
-  end
-
   def maybe_decode_live_select_value(attrs, field) do
     with value when is_binary(value) and byte_size(value) > 0 <- Map.get(attrs, field),
          %{"id" => _id} = decoded_value <- LiveSelect.decode(value) do

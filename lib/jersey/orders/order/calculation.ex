@@ -17,6 +17,8 @@ defmodule Jersey.Orders.Order.Calculation do
   @samples_weight 50
   @gift_weight 100
 
+  def min_order_items_price_for_post_discount, do: @min_order_items_price_for_post_discount
+  def discount_rate, do: @discount_rate
   def gift_weight, do: @gift_weight
   def samples_weight, do: @samples_weight
   def packet_weight, do: @packet_weight
@@ -88,7 +90,7 @@ defmodule Jersey.Orders.Order.Calculation do
   Determines if a gift is needed based on order items price.
   """
   def need_gift?(order_items_price) do
-    Decimal.gt?(order_items_price, Decimal.new(@min_order_items_price_for_gift))
+    Decimal.gte?(order_items_price, Decimal.new(@min_order_items_price_for_gift))
   end
 
   @doc """
@@ -96,7 +98,7 @@ defmodule Jersey.Orders.Order.Calculation do
   """
   def need_post_discount?(order_items_price) do
     order_items_price &&
-      Decimal.gt?(order_items_price, Decimal.new(@min_order_items_price_for_post_discount))
+      Decimal.gte?(order_items_price, Decimal.new(@min_order_items_price_for_post_discount))
   end
 
   @doc """
@@ -225,18 +227,5 @@ defmodule Jersey.Orders.Order.Calculation do
   """
   def with_can_count_post_cost?(calculation, customer, total_weight) do
     %{calculation | can_count_post_cost?: can_count_post_cost?(customer, total_weight)}
-  end
-
-  @doc """
-  Calculates post_cost for an order if possible, returns updated calculation map.
-  Returns original calculation if post_cost cannot be calculated.
-  """
-  def with_post_cost_if_possible(calculation, customer, total_weight) do
-    if can_count_post_cost?(customer, total_weight) do
-      post_cost = get_post_cost(customer, total_weight)
-      %{calculation | post_cost: post_cost}
-    else
-      calculation
-    end
   end
 end

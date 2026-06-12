@@ -22,7 +22,7 @@ msgstr "Адрес"
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:34
+#: lib/jersey_web/live/customer_live/form.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "Cancel"
 msgstr "Отмена"
@@ -38,12 +38,12 @@ msgstr "Город"
 msgid "Customer %{id}"
 msgstr "Клиент %{id}"
 
-#: lib/jersey_web/live/customer_live/form.ex:76
+#: lib/jersey_web/live/customer_live/form.ex:64
 #, elixir-autogen, elixir-format
 msgid "Customer created successfully"
 msgstr "Клиент успешно создан"
 
-#: lib/jersey_web/live/customer_live/form.ex:63
+#: lib/jersey_web/live/customer_live/form.ex:51
 #, elixir-autogen, elixir-format
 msgid "Customer updated successfully"
 msgstr "Клиент успешно обновлён"
@@ -63,7 +63,7 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: lib/jersey_web/live/customer_live/form.ex:23
+#: lib/jersey_web/live/customer_live/form.ex:22
 #, elixir-autogen, elixir-format
 msgid "Edit Customer"
 msgstr "Редактировать клиента"
@@ -85,7 +85,7 @@ msgstr "Список клиентов"
 msgid "Name"
 msgstr "Имя"
 
-#: lib/jersey_web/live/customer_live/form.ex:32
+#: lib/jersey_web/live/customer_live/form.ex:31
 #: lib/jersey_web/live/customer_live/index.html.heex:7
 #, elixir-autogen, elixir-format
 msgid "New Customer"
@@ -97,12 +97,12 @@ msgstr "Новый клиент"
 msgid "Nick"
 msgstr "Ник"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:31
+#: lib/jersey_web/live/customer_live/form.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Save Customer"
 msgstr "Сохранить клиента"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:30
+#: lib/jersey_web/live/customer_live/form.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr "Сохранение..."
@@ -122,27 +122,22 @@ msgstr "Просмотр клиента"
 msgid "This is a customer record from your database."
 msgstr "Это запись клиента из вашей базы данных."
 
-#: lib/jersey_web/live/customer_live/form.html.heex:5
-#, elixir-autogen, elixir-format
-msgid "Use this form to manage customer records in your database."
-msgstr "Используйте эту форму для управления записями клиентов в вашей базе данных."
-
-#: lib/jersey_web/live/customer_live/form.html.heex:27
+#: lib/jersey_web/live/customer_live/form.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "address"
 msgstr "адрес"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:21
+#: lib/jersey_web/live/customer_live/components/city_field.html.heex:2
 #, elixir-autogen, elixir-format
 msgid "city"
 msgstr "город"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:18
+#: lib/jersey_web/live/customer_live/form.html.heex:12
 #, elixir-autogen, elixir-format
 msgid "name"
 msgstr "имя"
 
-#: lib/jersey_web/live/customer_live/form.html.heex:13
+#: lib/jersey_web/live/customer_live/form.html.heex:7
 #, elixir-autogen, elixir-format
 msgid "nick"
 msgstr "ник"
@@ -156,3 +151,8 @@ msgstr ""
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Customer"
 msgstr "Клиент"
+
+#: lib/jersey_web/live/order_live/components/customer_field.html.heex:9
+#, elixir-autogen, elixir-format
+msgid "Select customer"
+msgstr ""
