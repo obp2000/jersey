@@ -114,6 +114,3 @@ defmodule JerseyWeb.OrderLive.FormTest do
     end
   end
 end
-
-# [debug] HANDLE EVENT "save" in JerseyWeb.OrderLive.Form
-#   Parameters: %{"order" => %{"address" => "", "customer" => "{\"id\":4,\"nick\":\"customer1\",\"name\":\"name2\",\"address\":null,\"city_id\":2}", "customer_text_input" => "customer1 name2 101000 Москва", "delivery_type" => "", "order_items_drop" => [""], "packet" => "", "post_cost" => ""}}

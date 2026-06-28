@@ -4,6 +4,7 @@
     value_mapper={&product_value_mapper/1}
     phx-target={@myself}
     placeholder={dgettext("product", "Select product")}
+    allow_clear={true}
   />
   <.error :for={msg <- Enum.map(@field.errors, &translate_error/1)}>{msg}</.error>
 </div>

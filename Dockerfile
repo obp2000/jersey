@@ -1,75 +1,101 @@
-# Find eligible builder and runner images on Docker Hub. We use Ubuntu 24.04 as
-# the base image for both builder and runner.
-FROM --platform=$BUILDPLATFORM elixir:1.18.1-erlang-27.2-ubuntu-24.04 AS base
+# Find eligible builder and runner images on Docker Hub. We use Ubuntu/Debian
+# instead of Alpine to avoid DNS resolution issues in production.
+#
+# https://hub.docker.com/r/hexpm/elixir/tags?name=ubuntu
+# https://hub.docker.com/_/ubuntu/tags
+#
+# This file is based on these images:
+#
+#   - https://hub.docker.com/r/hexpm/elixir/tags - for the build image
+#   - https://hub.docker.com/_/debian/tags?name=trixie-20260518-slim - for the release image
+#   - https://pkgs.org/ - resource for finding needed packages
+#   - Ex: docker.io/hexpm/elixir:1.20.1-erlang-29.0.2-debian-trixie-20260518-slim
+#
+ARG ELIXIR_VERSION=1.20.1
+ARG OTP_VERSION=29.0.2
+ARG DEBIAN_VERSION=trixie-20260518-slim
 
-# Set the locale
-ENV LANG C.UTF-8
+ARG BUILDER_IMAGE="docker.io/hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
+ARG RUNNER_IMAGE="docker.io/debian:${DEBIAN_VERSION}"
 
-# Install required dependencies
-RUN apt-get update -y && apt-get install -y --no-install-recommends \
-    build-essential \
-    git \
-    curl \
-    nodejs \
-    npm \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+FROM ${BUILDER_IMAGE} AS builder
 
-# Set the working directory
+# install build dependencies
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends build-essential git \
+  && rm -rf /var/lib/apt/lists/*
+
+# prepare build dir
 WORKDIR /app
 
-# --- Builder stage ---
-FROM base AS builder
+# install hex + rebar
+RUN mix local.hex --force \
+  && mix local.rebar --force
 
-# Install hex and rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
+# set build ENV
+ENV MIX_ENV="prod"
 
-# Set the MIX_ENV to prod for the build
-ENV MIX_ENV=prod
-
-# Install Mix dependencies
+# install mix dependencies
 COPY mix.exs mix.lock ./
-RUN mix deps.get --only prod
+RUN mix deps.get --only $MIX_ENV
+RUN mkdir config
+
+# copy compile-time config files before we compile dependencies
+# to ensure any relevant config change will trigger the dependencies
+# to be re-compiled.
+COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
-# Copy the remaining files
-COPY priv priv
-COPY lib lib
-
-# Compile
-RUN mix compile
-
-# Install assets
 RUN mix assets.setup
 
-# Build assets
+COPY priv priv
+
+COPY lib lib
+
+# Compile the release
+RUN mix compile
+
+COPY assets assets
+
+# compile assets
 RUN mix assets.deploy
 
-# Build release
+# Changes to config/runtime.exs don't require recompiling the code
+COPY config/runtime.exs config/
+
+COPY rel rel
 RUN mix release
 
-# --- Runner stage ---
-FROM base AS runner
+# start a new build stage so that the final image will only contain
+# the compiled release and other runtime necessities
+FROM ${RUNNER_IMAGE} AS final
 
-# Set the MIX_ENV to prod
-ENV MIX_ENV=prod
-ENV PHX_SERVER=true
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends libstdc++6 openssl libncurses6 locales ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
 
-# Don't run production as root
-RUN addgroup --system --gid 1000 jersey
-RUN adduser --system --uid 1000 --ingroup jersey jersey
-USER jersey
+# Set the locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+  && locale-gen
 
-WORKDIR /app
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
-# Copy the release from the builder stage
-COPY --from=builder --chown=jersey:jersey /app/_build/prod/rel/jersey ./
+WORKDIR "/app"
+RUN chown nobody /app
 
-# Set the release path
-ENV RELEASE_SERVER=true
+# set runner ENV
+ENV MIX_ENV="prod"
 
-# Expose the port the app runs on
-EXPOSE 4000
+# Only copy the final release from the build stage
+COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/jersey ./
 
-# Start the server
-CMD ["bin/server"]
+USER nobody
+
+# If using an environment that doesn't automatically reap zombie processes, it is
+# advised to add an init process such as tini via `apt-get install`
+# above and adding an entrypoint. See https://github.com/krallin/tini for details
+# ENTRYPOINT ["/tini", "--"]
+
+CMD ["/app/bin/server"]

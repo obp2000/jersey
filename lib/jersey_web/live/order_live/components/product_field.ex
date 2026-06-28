@@ -10,7 +10,6 @@ defmodule JerseyWeb.ProductField do
     send_update(LiveSelect.Component, id: live_select_id, options: options)
     {:noreply, socket}
   end
-
   def product_value_mapper(nil), do: nil
   def product_value_mapper(""), do: nil
 
@@ -21,7 +20,6 @@ defmodule JerseyWeb.ProductField do
   def product_value_mapper(_) do
     %Product{} |> product_option()
   end
-
   def product_option(product) do
     %{
       label: product.name,

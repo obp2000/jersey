@@ -38,7 +38,8 @@ defmodule JerseyWeb.OrderLive.Form do
   end
 
   @impl true
-  def handle_event("validate", %{"order" => order_params}, socket) do
+  def handle_event("validate", %{"order" => order_params} = params, socket) do
+    order_params = handle_target(order_params, params["_target"])
     changeset = Orders.change_order(socket.assigns.order, order_params)
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
@@ -80,4 +81,10 @@ defmodule JerseyWeb.OrderLive.Form do
 
   defp return_path("index", _order), do: ~p"/orders"
   defp return_path("show", order), do: ~p"/orders/#{order}"
+
+  defp handle_target(order_params, ["order", "order_items", order_item_index, "product"]) do
+    put_in(order_params, ["order_items", order_item_index, "set_price_from_product?"], true)
+  end
+
+  defp handle_target(order_params, _), do: order_params
 end

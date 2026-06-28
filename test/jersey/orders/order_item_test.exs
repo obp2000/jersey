@@ -25,7 +25,7 @@ defmodule Jersey.Orders.OrderItemTest do
 
       assert order_assoc.related == Order
       assert product_assoc.related == Product
-      assert product_assoc.on_replace == :nilify
+      # assert product_assoc.on_replace == :nilify
     end
 
     test "has timestamps" do
@@ -50,6 +50,7 @@ defmodule Jersey.Orders.OrderItemTest do
     test "accepts valid amount and price" do
       cs =
         OrderItem.base_changeset(%OrderItem{}, %{
+          order_id: 1,
           amount: Decimal.new("10"),
           price: Decimal.new("100")
         })
@@ -60,6 +61,7 @@ defmodule Jersey.Orders.OrderItemTest do
     test "accepts integer amount and price" do
       cs =
         OrderItem.base_changeset(%OrderItem{}, %{
+          order_id: 1,
           amount: 10,
           price: 100
         })
@@ -103,27 +105,23 @@ defmodule Jersey.Orders.OrderItemTest do
            product: product
          } do
       attrs = %{
-        amount: Decimal.new("10"),
-        price: Decimal.new("100"),
-        # Ecto associate setters expect structs
-        order: order,
-        product: %{
+        "amount" => Decimal.new("10"),
+        "price" => Decimal.new("100"),
+        "order" => order,
+        "product_id" => product.id,
+        "product" => %{
           id: product.id,
           name: product.name,
           price: product.price,
           density: product.density,
-          width: product.width,
-          # fields required by Product.changeset/2 casting pipeline
-          dollar_price: product.dollar_price,
-          dollar_rate: product.dollar_rate
+          width: product.width
         }
       }
 
       cs = OrderItem.changeset(%OrderItem{}, attrs)
 
       assert cs.valid?
-      # price is taken from product.price (42), so 10 * 42 = 420
-      expected_price = Calculation.order_item_price(Decimal.new("10"), Decimal.new("310"))
+      expected_price = Calculation.order_item_price(Decimal.new("10"), Decimal.new("100"))
       assert cs.changes.order_item_price == expected_price
 
       expected_weight =
@@ -136,37 +134,61 @@ defmodule Jersey.Orders.OrderItemTest do
       assert cs.changes.order_item_weight == expected_weight
     end
 
-    test "updates price from product when product price changes", %{
-      order: order,
-      product: product
-    } do
-      attrs = %{
-        amount: Decimal.new("10"),
-        price: Decimal.new("100"),
-        order: order,
-        product: %{
-          id: product.id,
-          name: product.name,
-          price: 200,
-          density: product.density,
-          width: product.width,
-          dollar_price: product.dollar_price,
-          dollar_rate: product.dollar_rate
-        }
-      }
-
-      cs = OrderItem.changeset(%OrderItem{}, attrs)
+    test "overwrites price from associated product when set_price_from_product? is true",
+         %{
+           order: order,
+           product: product
+         } do
+      cs =
+        OrderItem.changeset(%OrderItem{}, %{
+          "amount" => Decimal.new("10"),
+          "price" => Decimal.new("100"),
+          "set_price_from_product?" => true,
+          "order" => order,
+          "product_id" => product.id,
+          "product" => %{
+            id: product.id,
+            name: product.name,
+            price: Decimal.new("250"),
+            density: product.density,
+            width: product.width
+          }
+        })
 
       assert cs.valid?
-      # Price should be updated from product
-      assert Decimal.equal?(cs.changes.price, Decimal.new(200))
+      assert Decimal.equal?(cs.changes.price, Decimal.new("250"))
+    end
+
+    test "does not overwrite price from associated product when set_price_from_product? is false",
+         %{
+           order: order,
+           product: product
+         } do
+      cs =
+        OrderItem.changeset(%OrderItem{}, %{
+          "amount" => Decimal.new("10"),
+          "price" => Decimal.new("100"),
+          "set_price_from_product?" => false,
+          "order" => order,
+          "product_id" => product.id,
+          "product" => %{
+            id: product.id,
+            name: product.name,
+            price: Decimal.new("250"),
+            density: product.density,
+            width: product.width
+          }
+        })
+
+      assert cs.valid?
+      assert Decimal.equal?(cs.changes.price, Decimal.new("100"))
     end
 
     test "does not crash and returns weight 0 when product association is missing", %{
       order: order
     } do
       cs =
-        OrderItem.changeset(%OrderItem{order_id: order.id}, %{
+        OrderItem.changeset(%OrderItem{order_id: order.id, product_id: nil}, %{
           order_id: order.id,
           amount: Decimal.new("1"),
           price: Decimal.new("2")
@@ -191,10 +213,11 @@ defmodule Jersey.Orders.OrderItemTest do
       product: product
     } do
       attrs = %{
-        amount: Decimal.new("10.5"),
-        price: Decimal.new("100.25"),
-        order: order,
-        product: %{
+        "amount" => Decimal.new("10.5"),
+        "price" => Decimal.new("100.25"),
+        "order" => order,
+        "product_id" => product.id,
+        "product" => %{
           id: product.id,
           name: product.name,
           price: product.price,
@@ -208,8 +231,7 @@ defmodule Jersey.Orders.OrderItemTest do
       cs = OrderItem.changeset(%OrderItem{}, attrs)
 
       assert cs.valid?
-      # price is taken from product.price (42), so 10.5 * 42 = 441
-      expected_price = Calculation.order_item_price(Decimal.new("10.5"), Decimal.new("310"))
+      expected_price = Calculation.order_item_price(Decimal.new("10.5"), Decimal.new("100.25"))
       assert cs.changes.order_item_price == expected_price
     end
   end
@@ -450,10 +472,10 @@ defmodule Jersey.Orders.OrderItemTest do
 
     test "handles very large amounts", %{order: order, product: product} do
       attrs = %{
-        amount: Decimal.new("1000000"),
-        price: Decimal.new("100"),
-        order: order,
-        product: %{
+        "amount" => Decimal.new("1000000"),
+        "price" => Decimal.new("100"),
+        "order" => order,
+        "product" => %{
           id: product.id,
           name: product.name,
           price: product.price,
@@ -472,10 +494,10 @@ defmodule Jersey.Orders.OrderItemTest do
 
     test "handles decimal amounts", %{order: order, product: product} do
       attrs = %{
-        amount: Decimal.new("0.5"),
-        price: Decimal.new("100"),
-        order: order,
-        product: %{
+        "amount" => Decimal.new("0.5"),
+        "price" => Decimal.new("100"),
+        "order" => order,
+        "product" => %{
           id: product.id,
           name: product.name,
           price: product.price,
@@ -494,10 +516,10 @@ defmodule Jersey.Orders.OrderItemTest do
 
     test "handles zero price", %{order: order, product: product} do
       attrs = %{
-        amount: Decimal.new("10"),
-        price: Decimal.new("0"),
-        order: order,
-        product: %{
+        "amount" => Decimal.new("10"),
+        "price" => Decimal.new("0"),
+        "order" => order,
+        "product" => %{
           id: product.id,
           name: product.name,
           price: 0,

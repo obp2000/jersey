@@ -368,6 +368,34 @@ defmodule Jersey.Orders.Order.CalculationTest do
       assert result.need_gift? == false
       assert result.need_post_discount? == false
       assert Decimal.equal?(result.post_cost_with_packet, new("525"))
+      assert Decimal.equal?(result.post_discount, new(0))
+
+      assert Decimal.equal?(result.total_post_cost, new("525"))
+    end
+
+    test "does not apply post_discount when need_post_discount? is false" do
+      # order_items_price = 999 < 1000 => скидка не применяется
+      order_items = [
+        %Ecto.Changeset{
+          changes: %{
+            action: :insert,
+            amount: new("9"),
+            price: new("111"),
+            product: %{density: 0, width: 0}
+          }
+        }
+      ]
+
+      result =
+        Calculation.calculate_all(%{
+          order_items: order_items,
+          post_cost: new("500"),
+          packet: 25
+        })
+
+      assert result.need_post_discount? == false
+      assert Decimal.equal?(result.post_discount, new(0))
+      assert Decimal.equal?(result.total_post_cost, new("525"))
     end
 
     test "handles nil post_cost and packet" do

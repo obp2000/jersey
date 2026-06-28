@@ -201,8 +201,13 @@ defmodule Jersey.Orders.Order.Calculation do
     need_gift? = need_gift?(order_items_price)
     need_post_discount? = need_post_discount?(order_items_price)
     post_cost_with_packet = post_cost_with_packet(post_cost, packet)
-    post_discount = post_discount(post_cost_with_packet)
+
+    post_discount =
+      if need_post_discount?, do: post_discount(post_cost_with_packet), else: Decimal.new(0)
+
+
     total_post_cost = total_post_cost(post_cost_with_packet, post_discount)
+
     total_price = total_price(order_items_price, total_post_cost)
     total_weight = total_weight(order_items_weight, need_gift?)
 

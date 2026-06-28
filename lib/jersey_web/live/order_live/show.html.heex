@@ -12,6 +12,17 @@
   </.header>
 
   <.list>
-    <:item title={dgettext("order", "Customer")}>{Customers.full_customer_name(@order.customer)}</:item>
+    <:item title={dgettext("order", "Customer")}>
+      {Customers.full_customer_name(@order.customer)}
+    </:item>
+    <:item title={dgettext("order", "Order sum")}>
+      {@order.order_items_price}
+    </:item>    
+    <:item title={dgettext("order", "Total price")}>
+      {@order.total_price}
+    </:item>
+    <:item title={dgettext("order", "Inserted at")}>
+      {@order.inserted_at}
+    </:item>              
   </.list>
 </Layouts.app>
